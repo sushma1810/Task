@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 
+import 'package:demo1/bottom.dart';
+import 'package:demo1/top.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,8 +27,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title,}) : super(key: key);
   final String title;
-  
-  
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -41,7 +41,9 @@ bool value=true;
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
         centerTitle: true,
         title:          
            Text('Sleep schedule',
@@ -49,218 +51,83 @@ bool value=true;
            ),
         ),
         leading: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(30, 12, 0, 12),
             child: Container(
             height: 1,
-            width: 50,
-            decoration: BoxDecoration(color: Colors.black12,borderRadius: BorderRadius.circular(10)
+            width: 40,
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 241, 241, 241),
+              borderRadius: BorderRadius.circular(10)
             ),
-            child:  Icon(Icons.arrow_back_ios_new,color: Colors.black,),),
+            child:  Icon(
+              Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+            size: 15,
+            ),
+            ),
           ),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 30),
             child: Container(
             height: 1,
-            width: 50,
-            decoration: BoxDecoration(color: Colors.black12,borderRadius: BorderRadius.circular(10)
+            width: 30,
+            decoration: BoxDecoration(
+               color: Color.fromARGB(255, 241, 241, 241),
+               borderRadius: BorderRadius.circular(10)
             ),
-            child:  Icon(Icons.more_horiz,color: Colors.black,),),
+            child:  Icon(
+              Icons.more_horiz,
+            color: Colors.black,size: 15,),),
           ),
-        
         ],
-        
       ),
       
       body: Center(
-        child: Container(height: 620,width: 300,color: Color.fromARGB(31, 207, 204, 204),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              
-              SizedBox(height: 10,),
-              
-               Top_Smethod(),
-            SizedBox(height: 5,
-            ),
-            Text('Your schedule',
-            style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
-            textAlign: TextAlign.start,),
-            SizedBox(height: 5,),
+        child: Container(         
+          //margin: EdgeInsets.all(20),
+          margin: EdgeInsets.symmetric(vertical: 10.0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 0.0),
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Top_Smethod(),
+                SizedBox(height: 20,),            
+                        Padding(
+                          padding: const EdgeInsets.only(right: 200),
+                          child: Text('Your schedule',
+                             textAlign: TextAlign.left,
+                             style: TextStyle(
+                             fontWeight: FontWeight.bold,
+                             color: Colors.black),
+                             ),
+                        ),
+                      
+                    
+                  
+                SizedBox(height: 15,),
                 Scroll_Method(),
-SizedBox(height: 10,),
-              C1_Method(),
-              C2_Method(),
-SizedBox(height: 10,),
-              Bottom_Smethod(),
-
-
-              ],          
+                SizedBox(height: 20,),
+                C1_Method(),
+                SizedBox(height: 10,),
+                C2_Method(),
+                SizedBox(height: 10,),
+                Bottom_Smethod(),
+              ],
+              ),
+            ),
           ),
         ),
       ),
      );
   }
 
-  Stack Top_Smethod() {
-    return Stack(
-                  children: [
-                Container(height: 150,width: 300,
-                
-                decoration: BoxDecoration(color: Color.fromARGB(255, 204, 230, 251),borderRadius: BorderRadius.circular(10)
-                ),
-                ),
-Positioned(top: 30,left: 20,
-child:Text('Ideal Hours of Sleep',
-style: TextStyle(fontWeight: FontWeight.bold,),) ),
-
-Positioned(top: 60,left: 30,child:Text('8 hours 30minutes',
-style: TextStyle(color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontSize: 14),) ),
-
-
-Positioned(top: 90,left: 30,
-child: Container(
-height: 25,
-width: 100,
-decoration: BoxDecoration(
-  gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromARGB(255, 80, 164, 233),
-                Color.fromARGB(255, 73, 51, 212),
-              ],
-            ),
-  
-  borderRadius: BorderRadius.circular(20)
-),
-child:  
-Padding(
-  padding: const EdgeInsets.all(3.0),
-  child:   Text('Learn More',
-  textAlign: TextAlign.center,
-  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,
-  color: Colors.white)),
-),
-),),
-
-                Positioned(right: 10,bottom: 0,top: 0,
-                  child: Container(height: 100,width: 120,
-                    decoration: BoxDecoration(
-                    image: DecorationImage(
-                    image: AssetImage('assets/mooon.png'),),
-                    ), 
-                          ),
-                ),
-          ],
-                );
-  }
-
-  Stack Bottom_Smethod() {
-    return Stack(
-              children: [
-                Positioned(child: Container(
-              height: 115,width: 300,
-              decoration: BoxDecoration(
-                color: Colors.white, 
-              borderRadius: BorderRadius.circular(10),
-              ),
-                ),
-              ),
-                Container(
-              height: 90,width: 300,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 248, 211, 254),
-              borderRadius: BorderRadius.circular(10),
-              ),
-              ),
-
-                 Positioned(top: 20, left: 20,
-                  child:
-                  RichText(
-                        text: TextSpan(text: 'You will get ',style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black, 
-                            fontSize: 10),
-                        
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: '8',
-                            style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black, 
-                            fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: 'hours',
-                            style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black, 
-                            fontSize: 10),
-                          ),
-                          TextSpan(
-                            text: ' 10',
-                            style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black, 
-                            fontSize: 12),
-                          ),
-                          TextSpan(
-                            text: 'minutes',
-                            style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black, 
-                            fontSize: 10),
-                          ),
-                        ]
-                        ),                      
-                      ),                  
-                ),
-                Positioned( top: 40, left: 20,
-                        child: Text('for tonight',
-                        style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black, 
-                              fontSize: 10),),
-                      ),
-
-                      Positioned(bottom: 45,left: 20,
-                        child: Container(
-                          width: 230,height: 10,
-                          decoration: BoxDecoration(
-                          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-              Color.fromARGB(255, 201, 128, 214),
-              Color.fromARGB(255, 170, 89, 227),
-              ],
-            ),                           
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(8),bottomLeft: Radius.circular(8))
-                          ),
-                          child: Text('96%',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white, 
-                              fontSize: 8),),),
-                          ),
-
-                          Positioned(right: 0,bottom: 0,
-                            child: FloatingActionButton(onPressed: () {
-                              },   
-                                           
-                            backgroundColor: Color.fromARGB(255, 190, 105, 206),
-                            child: Icon(Icons.add,size: 15,),
-                            ),
-                          ),
-
-              ]
-            );
-  }
-
   SingleChildScrollView Scroll_Method() {
-    return SingleChildScrollView(scrollDirection: Axis.horizontal, 
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal, 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -303,11 +170,13 @@ SizedBox(width: 10,),
                 Container(height: 80,width: 60,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
               colors: [
-                Color.fromARGB(255, 159, 206, 245),
-                Color.fromARGB(255, 131, 115, 234),
+                 Color.fromARGB(255, 150, 195, 232),
+                Color.fromARGB(172, 105, 112, 236),
+                // Color.fromARGB(255, 159, 206, 245),
+                // Color.fromARGB(255, 131, 115, 234),
               ],
             ),
                   
@@ -342,36 +211,54 @@ SizedBox(width: 10,),
                     Text('16'),
                   ],
                 ),
-                ),   
+                ),
+
+                 SizedBox(width: 10,),
                 Container(height: 80,width: 60,
                 decoration: BoxDecoration(color: Color.fromARGB(31, 178, 175, 175), 
                 borderRadius: BorderRadius.circular(10)),
                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Sun'),
-                    Text('16'),
+                    Text('Mon'),
+                    Text('17'),
                   ],
                 ),
-                ),   
+                ),
+
+                 SizedBox(width: 10,),
                 Container(height: 80,width: 60,
                 decoration: BoxDecoration(color: Color.fromARGB(31, 178, 175, 175), 
                 borderRadius: BorderRadius.circular(10)),
                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Sun'),
-                    Text('16'),
+                    Text('Tue'),
+                    Text('18'),
                   ],
                 ),
-                ),                
+                ),   
+                                
                 ],
                 ),
                 );
   }
 
+
   Container C1_Method() {
+    bool value = true;
     return Container(
-            height: 65,width: 300,decoration: BoxDecoration(color: Colors.white38, 
-              borderRadius: BorderRadius.circular(10)),
+            height: 80,width: 300,
+
+            decoration: BoxDecoration(
+             color: Colors.white, 
+            borderRadius: BorderRadius.circular(20),
+            boxShadow:[
+              BoxShadow(
+              color: Color.fromARGB(255, 230, 229, 229),
+              offset: Offset(1.0, 1.0),
+              blurRadius: 2.0,
+                spreadRadius: 0.0,
+              ),]
+            ),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
@@ -381,30 +268,31 @@ SizedBox(width: 10,),
                 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                   
-                    RichText(text: TextSpan(
+                    RichText(text: const TextSpan(
                     text: 'Bedtime,',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black, 
-                      
                       ),
+                      
                       children: <TextSpan>[
+                        
                         TextSpan(text: ' 09.00 pm',
                         style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black38, 
                       fontSize: 10),
                       ),
-                      
                       ],
                     ),
                     ),
 
                     
                   RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                     text: 'in ',
                     style: TextStyle(                        
                       color: Colors.black38, 
@@ -442,13 +330,13 @@ SizedBox(width: 10,),
                     ),
                 ],
                 ),
-                SizedBox(width: 20,),
+                const SizedBox(width: 20,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(Icons.more_vert,size: 15,color: Colors.black38,),
-
-                    Switch(value: value,
+                    const Icon(Icons.more_vert,size: 15,color: Colors.black38,),
+                    Switch(
+                     value: value,
                      onChanged: (value) => setState( () => this.value=value),
                      activeColor: Colors.white,
                      activeTrackColor: Colors.purpleAccent[100],
@@ -463,9 +351,21 @@ SizedBox(width: 10,),
 
 
   Container C2_Method() {
+    bool value = true;
     return Container(
-            height: 65,width: 300,decoration: BoxDecoration(color: Colors.white38, 
-              borderRadius: BorderRadius.circular(10)),
+            height: 80,width: 300,decoration: BoxDecoration(
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(20),
+              boxShadow:[
+              BoxShadow(
+                color: Color.fromARGB(255, 230, 229, 229),
+              offset: Offset(1.0, 1.0),
+              blurRadius: 2.0,
+                spreadRadius: 0.0,
+              ),
+              ]
+              
+              ),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
@@ -475,9 +375,10 @@ SizedBox(width: 10,),
                 
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                   
-                    RichText(text: TextSpan(
+                    RichText(text: const TextSpan(
                     text: 'Alarm,',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -498,7 +399,7 @@ SizedBox(width: 10,),
 
                     
                   RichText(
-                    text: TextSpan(
+                    text: const TextSpan(
                     text: 'in ',
                     style: TextStyle(                        
                       color: Colors.black38, 
@@ -536,11 +437,11 @@ SizedBox(width: 10,),
                     ),
                 ],
                 ),
-                SizedBox(width: 20,),
+                const SizedBox(width: 20,),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(Icons.more_vert,size: 15,color: Colors.black38,),
+                    const Icon(Icons.more_vert,size: 15,color: Colors.black38,),
 
                     Switch(value: value,
                      onChanged: (value) => setState( () => this.value=value),
@@ -554,4 +455,5 @@ SizedBox(width: 10,),
             ),
           );
   }
+
 }

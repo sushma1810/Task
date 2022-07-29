@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
        // primarySwatch: Colors.white,
        backgroundColor: Colors.transparent,
       ),
-      home:  MyHomePage(title: 'hello',),
+      home:  MyHomePage(title: 'Test1',),
     );
   }
 }
